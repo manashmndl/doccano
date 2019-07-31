@@ -1,6 +1,8 @@
 ARG PYTHON_VERSION="3.6"
 FROM python:${PYTHON_VERSION}-stretch AS builder
 
+RUN apt-get install -y gcc
+
 ARG NODE_VERSION="8.x"
 RUN curl -sL "https://deb.nodesource.com/setup_${NODE_VERSION}" | bash - \
  && apt-get install --no-install-recommends -y \

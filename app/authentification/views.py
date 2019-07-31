@@ -27,12 +27,12 @@ class SignupView(TemplateView):
         if not bool(settings.ALLOW_SIGNUP):
             return redirect('signup')
 
-        if not hasattr(settings, "EMAIL_BACKEND") and not hasattr(settings, "EMAIL_HOST"):
+        if False:
             return render(request, 'email_not_set.html')
 
         if form.is_valid():
             user = form.save(commit=False)
-            user.is_active = False
+            user.is_active = True
             user.save()
             current_site = get_current_site(request)
             mail_subject = 'Activate your account.'
